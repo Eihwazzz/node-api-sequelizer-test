@@ -1,0 +1,5 @@
+# Environment config - de ser usado, debe ser ignorada en casos reales
+# .env
+
+# dependencies
+/node_modules
