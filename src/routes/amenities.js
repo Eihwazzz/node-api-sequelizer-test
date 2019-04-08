@@ -12,8 +12,25 @@ module.exports = app => {
         });
     });
 
+    app.get('/amenities', (req, res) => {
+        Amenities.findAll({})
+        .then(result => res.json(result))
+        .catch(error => {
+            res.status(412).json({msg: error.message});
+        });
+    });
+
     app.post('/amenities', (req, res) => {
         Amenities.create(req.body)
+        .then(result => res.json(result))
+        .catch(error => {
+            res.status(412).json({msg: error.message});
+        });  
+    });
+
+    //creacion multiple de amenities
+    app.post('/amenitiesMultiple', (req, res) => {
+        Amenities.bulkCreate(req.body)
         .then(result => res.json(result))
         .catch(error => {
             res.status(412).json({msg: error.message});
